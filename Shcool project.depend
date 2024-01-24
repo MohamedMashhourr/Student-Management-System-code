@@ -1,0 +1,25 @@
+# depslib dependency file v1.0
+1706065161 source:d:\course embedded\codes\small project\shcool project\student.c
+	<stdio.h>
+	<stdlib.h>
+	"student.h"
+
+1706061825 d:\course embedded\codes\small project\shcool project\student.h
+
+1706064809 source:d:\course embedded\codes\small project\shcool project\main.c
+	<stdio.h>
+	<stdlib.h>
+	"student.h"
+
+1706064809 source:d:\course embedded\codes\small project\student management system\main.c
+	<stdio.h>
+	<stdlib.h>
+	"student.h"
+
+1706061825 d:\course embedded\codes\small project\student management system\student.h
+
+1706065161 source:d:\course embedded\codes\small project\student management system\student.c
+	<stdio.h>
+	<stdlib.h>
+	"student.h"
+
