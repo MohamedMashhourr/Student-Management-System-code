@@ -29,7 +29,9 @@ typedef enum{
     LIST_NOT_FOUND,
     LIST_DONE,
     STUDENT_ID_FOUND,
-    STUDENT_ID_NOT_FOUND
+    STUDENT_ID_NOT_FOUND,
+    STUDENT_NAME_FOUND,
+    STUDENT_NAME_NOT_FOUND
 
 
 }listStatus_t;
@@ -59,9 +61,15 @@ void student_AddToLast(node_t*head,student_t s);
 listStatus_t student_PrintAll(node_t*head);
 listStatus_t student_delete(node_t**phead,student_t s);
 listStatus_t student_SearchId(node_t*head,student_t s);
-listStatus_t student_EditId(node_t*head,student_t olds1,student_t news1);
+listStatus_t student_EditId(node_t*head,int id,student_t s);
+
+listStatus_t student_EditPhone(node_t*head,int id,student_t news1);
 
 listStatus_t student_SearchName(node_t*head,student_t s);
+int string_compare(node_t *head,student_t s);
+listStatus_t student_PrintName(node_t*head,student_t s);
+listStatus_t student_EditIdByName(node_t*head,int id,student_t s);
+listStatus_t student_EditPhoneByName(node_t*head,student_t s);
 
 
 int student_count(node_t *p);

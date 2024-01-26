@@ -161,6 +161,68 @@ listStatus_t student_delete(node_t**phead,student_t s)
     return STUDENT_ID_NOT_FOUND;
 }
 
+int string_compare(node_t *head,student_t s)
+{
+    node_t* current=head;
+    int i;
+    for(i=0;current->s1.name[i]||s.name[i];i++)
+    {
+        if(current->s1.name[i]!= s.name[i])
+        {
+            return 0;
+        }
+    }
+    return 1;
+}
+
+listStatus_t student_SearchName(node_t*head,student_t s)
+{
+    node_t*current=head;
+    int x;
+
+    while(current!=NULLPTR)
+    {
+
+       x=string_compare(current,s);
+       if(x==1)
+       {
+           return STUDENT_NAME_FOUND;
+       }
+
+
+        current=current->next;
+    }
+    return STUDENT_NAME_NOT_FOUND;
+
+
+}
+
+listStatus_t student_PrintName(node_t*head,student_t s)
+{
+    node_t*current=head;
+    int x;
+    while(current!=NULLPTR)
+    {
+         x=string_compare(current,s);
+       if(x==1)
+       {
+               printf("\n==============================\n");
+    printf(" NAME: ");
+    string_print(&current->s1.name);
+    printf(" ID : %d\n",current->s1.id);
+    printf(" AGE : %d\n",current->s1.age);
+    printf(" PHONE NUMBER : ");
+    string_print(&current->s1.phone);
+            printf("\n==============================\n");
+            return STUDENT_NAME_FOUND;
+       }
+
+        current=current->next;
+    }
+    return STUDENT_ID_NOT_FOUND;
+
+
+}
 listStatus_t student_SearchId(node_t*head,student_t s)
 {
     node_t*current=head;
@@ -202,15 +264,15 @@ listStatus_t student_PrintId(node_t*head,student_t s)
 
 
 }
-listStatus_t student_EditId(node_t*head,student_t olds1,student_t news1)
+listStatus_t student_EditId(node_t*head,int id,student_t s)
 {
     node_t*current=head;
 
     while(current!=NULLPTR)
     {
-        if(current->next->s1.id==olds1.id)
+        if(current->s1.id==s.id)
         {
-            current->s1.id=news1.id;
+            current->s1.id=id;
 
             return STUDENT_ID_FOUND;
         }
@@ -221,6 +283,75 @@ listStatus_t student_EditId(node_t*head,student_t olds1,student_t news1)
 
 }
 
+listStatus_t student_EditIdByName(node_t*head,int id,student_t s)//************************************************
+{
+    node_t*current=head;
+    int x;
+
+    while(current!=NULLPTR)
+    {
+       x=string_compare(current,s);
+       if(x==1)
+       {
+           current->s1.id=id;
+           return STUDENT_NAME_FOUND;
+       }
+        current=current->next;
+    }
+    return STUDENT_ID_NOT_FOUND;
+
+
+}
+
+
+listStatus_t student_EditPhone(node_t*head,int id,student_t news1)
+{
+    node_t*current=head;
+    int i;
+
+    while(current!=NULLPTR)
+    {
+        if(current->s1.id==id)
+        {
+            for(i=0;i<12;i++)
+            {
+                current->s1.phone[i]=news1.phone[i];
+            }
+
+
+            return STUDENT_ID_FOUND;
+        }
+        current=current->next;
+    }
+    return STUDENT_ID_NOT_FOUND;
+
+
+}
+
+listStatus_t student_EditPhoneByName(node_t*head,student_t s)
+{
+    node_t*current=head;
+    int i,x;
+
+    while(current!=NULLPTR)
+    {
+
+        x=string_compare(current,s);
+       if(x==1)
+       {
+          for(i=0;i<12;i++)
+            {
+                current->s1.phone[i]=s.phone[i];
+            }
+           return STUDENT_NAME_FOUND;
+       }
+
+        current=current->next;
+    }
+    return STUDENT_ID_NOT_FOUND;
+
+
+}
 
 node_t* student_SortList(node_t* head)
 {
